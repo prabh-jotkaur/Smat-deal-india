@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#6d28d9"><meta name="description" content="Discover useful deals across beauty, fashion, home and electronics.">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>Smart Deals India</title>
+<style>
+:root{--purple:#6d28d9;--ink:#201735;--muted:#756d83;--bg:#f7f5fb;--card:#fff;--line:#eee9f5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:linear-gradient(130deg,#4c1d95,#7c3aed 65%,#a78bfa);color:white;padding:22px 18px 24px;border-radius:0 0 26px 26px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-size:21px;font-weight:850;letter-spacing:-.5px}.tag{font-size:12px;opacity:.88}
+.lang{border:1px solid #ffffff80;background:#ffffff20;color:white;border-radius:20px;padding:8px 12px;font-weight:700}
+h1{font-size:26px;line-height:1.15;margin:24px 0 7px;max-width:340px}header p{margin:0;color:#eee4ff}
+.searchwrap{margin-top:18px}.search{width:100%;padding:14px 16px;border:0;border-radius:14px;font-size:15px;outline:none;box-shadow:0 5px 18px #32106b30}
+main{max-width:780px;margin:auto;padding:18px 15px 95px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 12px}.sectionhead h2{font-size:18px;margin:0}.small{color:var(--muted);font-size:12px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.cat{border:1px solid var(--line);background:white;border-radius:16px;padding:12px 4px;text-align:center;color:var(--ink);font-weight:700;font-size:12px;cursor:pointer}.cat .emoji{display:block;font-size:25px;margin-bottom:5px}.cat.active{border:2px solid var(--purple);background:#f3edff;color:var(--purple)}
+.banner{margin:20px 0;background:linear-gradient(110deg,#fff0f5,#f1eaff);border:1px solid #eadcfb;border-radius:18px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:10px}.banner b{font-size:16px}.banner span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.banner .spark{font-size:34px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:12px;min-width:0;box-shadow:0 3px 12px #25113b08}.visual{height:100px;border-radius:13px;background:#f4efff;display:grid;place-items:center;font-size:43px;position:relative}.pill{position:absolute;top:8px;left:8px;background:#ede9fe;color:#5b21b6;border-radius:20px;padding:4px 7px;font-size:10px;font-weight:800}.save{position:absolute;right:8px;top:7px;border:0;border-radius:50%;width:28px;height:28px;background:#fff;font-size:16px;cursor:pointer}.product h3{font-size:14px;margin:10px 0 4px;line-height:1.25}.product p{font-size:11px;color:var(--muted);margin:0 0 10px;min-height:28px}.buy{display:block;text-align:center;background:var(--purple);color:white;text-decoration:none;padding:9px;border-radius:10px;font-size:12px;font-weight:800}.buy.demo{background:#eee9f5;color:#5f566b}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px}.disclosure{margin:22px 0;padding:13px;border:1px dashed #d6c8e9;border-radius:13px;color:#6d6478;font-size:11px;line-height:1.5}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:10px 6px calc(10px + env(safe-area-inset-bottom));z-index:3}nav button{border:0;background:none;color:var(--muted);font-size:11px;font-weight:700;display:grid;gap:3px;justify-items:center}nav button span{font-size:19px}nav button.active{color:var(--purple)}
+footer{text-align:center;color:#938a9e;font-size:11px;padding:10px}
+@media(min-width:620px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}header{padding-left:max(22px,calc((100% - 740px)/2));padding-right:max(22px,calc((100% - 740px)/2))}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div><div class="brand">✨ Smart Deals India</div><div class="tag" data-i="tag">Smart finds. Better prices.</div></div><button class="lang" id="langBtn">हिंदी</button></div>
+ <h1 data-i="headline">Find your next favourite deal.</h1><p data-i="subhead">Beauty, fashion, home & tech — all in one place.</p>
+ <div class="searchwrap"><input class="search" id="search" placeholder="Search products..." aria-label="Search products"></div>
+</header>
+<main>
+ <div class="sectionhead"><h2 data-i="categories">Explore categories</h2><span class="small" data-i="all">4 collections</span></div>
+ <div class="categories" id="categories">
+  <button class="cat active" data-cat="All"><span class="emoji">✨</span><span data-i="allcat">All</span></button>
+  <button class="cat" data-cat="Beauty"><span class="emoji">🧴</span><span data-i="beauty">Beauty</span></button>
+  <button class="cat" data-cat="Fashion"><span class="emoji">👗</span><span data-i="fashion">Fashion</span></button>
+  <button class="cat" data-cat="Home"><span class="emoji">🏡</span><span data-i="home">Home</span></button>
+  <button class="cat" data-cat="Electronics"><span class="emoji">🎧</span><span data-i="electronics">Electronics</span></button>
+ </div>
+ <div class="banner"><div><b data-i="bannerTitle">Little finds, big smiles 💜</b><span data-i="bannerSub">Curated picks for everyday life.</span></div><div class="spark">🛍️</div></div>
+ <div class="sectionhead"><h2 data-i="picks">Today's picks</h2><span class="small" id="count">8 items</span></div>
+ <div class="products" id="products"></div>
+ <div class="disclosure" data-i="disclosure">Disclosure: Some shopping links may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Product examples in this starter version are demonstrations, not verified live offers.</div>
+ <footer>Made with 💜 in India · <span data-i="footer">Prices and availability may change on retailer websites.</span></footer>
+</main>
+<nav><button class="active" id="homeTab"><span>⌂</span><label data-i="homeTab">Home</label></button><button id="savedTab"><span>♡</span><label data-i="savedTab">Saved</label></button><button id="aboutTab"><span>ⓘ</span><label data-i="aboutTab">About</label></button></nav>
+<script>
+const items=[
+ {id:1,cat:"Beauty",emoji:"🧴",name:"Daily skincare essentials",hi:"रोज़ाना स्किनकेयर ज़रूरतें",desc:"Simple picks for your routine",dh:"आपकी दिनचर्या के लिए",tag:"Beauty"},
+ {id:2,cat:"Beauty",emoji:"💄",name:"Makeup bag favourites",hi:"मेकअप बैग के पसंदीदा",desc:"Everyday beauty inspiration",dh:"रोज़ाना मेकअप के आइडिया",tag:"Popular"},
+ {id:3,cat:"Fashion",emoji:"👟",name:"Everyday sneakers",hi:"रोज़ पहनने वाले स्नीकर्स",desc:"Comfortable everyday style",dh:"आरामदायक रोज़ाना स्टाइल",tag:"Fashion"},
+ {id:4,cat:"Fashion",emoji:"👜",name:"Bags & accessories",hi:"बैग और एक्सेसरीज़",desc:"Style your everyday look",dh:"अपने लुक को खास बनाएं",tag:"Trending"},
+ {id:5,cat:"Home",emoji:"☕",name:"Kitchen must-haves",hi:"किचन के ज़रूरी सामान",desc:"Useful finds for your home",dh:"आपके घर के काम की चीज़ें",tag:"Home"},
+ {id:6,cat:"Home",emoji:"🛋️",name:"Cozy home upgrades",hi:"घर को आरामदायक बनाएं",desc:"Small ideas for a fresh space",dh:"घर के लिए नए आइडिया",tag:"Ideas"},
+ {id:7,cat:"Electronics",emoji:"🎧",name:"Audio & tech accessories",hi:"ऑडियो और टेक एक्सेसरीज़",desc:"Handy gadgets for daily use",dh:"रोज़ाना काम आने वाले गैजेट",tag:"Tech"},
+ {id:8,cat:"Electronics",emoji:"⌚",name:"Smart everyday gadgets",hi:"स्मार्ट रोज़मर्रा के गैजेट",desc:"Explore practical tech picks",dh:"काम के टेक प्रोडक्ट देखें",tag:"Tech"}
+];
+const words={en:{tag:"Smart finds. Better prices.",headline:"Find your next favourite deal.",subhead:"Beauty, fashion, home & tech — all in one place.",categories:"Explore categories",all:"4 collections",allcat:"All",beauty:"Beauty",fashion:"Fashion",home:"Home",electronics:"Electronics",bannerTitle:"Little finds, big smiles 💜",bannerSub:"Curated picks for everyday life.",picks:"Today's picks",disclosure:"Disclosure: Some shopping links may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Product examples in this starter version are demonstrations, not verified live offers.",footer:"Prices and availability may change on retailer websites.",homeTab:"Home",savedTab:"Saved",aboutTab:"About",search:"Search products...",shop:"Link coming soon",items:"items",about:"Smart Deals India helps you discover useful products across beauty, fashion, home and electronics. We are an independent discovery guide, not a retailer."},hi:{tag:"स्मार्ट पसंद, बेहतर कीमतें।",headline:"अपनी पसंद के शानदार ऑफ़र खोजें।",subhead:"ब्यूटी, फैशन, घर और टेक — सब एक जगह।",categories:"कैटेगरी देखें",all:"4 कलेक्शन",allcat:"सभी",beauty:"ब्यूटी",fashion:"फैशन",home:"होम",electronics:"इलेक्ट्रॉनिक्स",bannerTitle:"छोटी पसंद, बड़ी खुशी 💜",bannerSub:"रोज़मर्रा के लिए चुने हुए प्रोडक्ट।",picks:"आज की पसंद",disclosure:"जानकारी: कुछ शॉपिंग लिंक एफिलिएट लिंक हो सकते हैं। उनसे खरीदारी करने पर हमें बिना किसी अतिरिक्त कीमत के कमीशन मिल सकता है। इस शुरुआती वर्ज़न के प्रोडक्ट केवल उदाहरण हैं, लाइव ऑफ़र नहीं।",footer:"रिटेलर की वेबसाइट पर कीमत और उपलब्धता बदल सकती है।",homeTab:"होम",savedTab:"सेव किए",aboutTab:"जानकारी",search:"प्रोडक्ट खोजें...",shop:"लिंक जल्द आएगा",items:"प्रोडक्ट",about:"Smart Deals India आपको ब्यूटी, फैशन, घर और इलेक्ट्रॉनिक्स के उपयोगी प्रोडक्ट खोजने में मदद करता है। हम स्वतंत्र जानकारी देने वाला प्लेटफ़ॉर्म हैं, दुकानदार नहीं।"}};
+let lang="en",category="All",saved=JSON.parse(localStorage.getItem("sdiSaved")||"[]"),view="home";
+const $=s=>document.querySelector(s);
+function translate(){document.querySelectorAll("[data-i]").forEach(el=>{const k=el.dataset.i;if(words[lang][k])el.textContent=words[lang][k]});$("#search").placeholder=words[lang].search;$("#langBtn").textContent=lang==="en"?"हिंदी":"English";render()}
+function render(){let q=$("#search").value.toLowerCase();let list=items.filter(x=>(category==="All"||x.cat===category)&&(view!=="saved"||saved.includes(x.id))&&(x.name.toLowerCase().includes(q)||x.hi.includes(q)||x.cat.toLowerCase().includes(q)));$("#count").textContent=list.length+" "+words[lang].items;$("#products").innerHTML=list.length?list.map(x=>`<article class="product"><div class="visual"><span class="pill">${x.tag}</span><button class="save" data-save="${x.id}" aria-label="Save">${saved.includes(x.id)?"♥":"♡"}</button>${x.emoji}</div><h3>${lang==="en"?x.name:x.hi}</h3><p>${lang==="en"?x.desc:x.dh}</p><a class="buy demo" href="#" data-demo>${words[lang].shop}</a></article>`).join(""):`<div class="empty">♡<br>${lang==="en"?"No saved products yet.":"अभी कोई प्रोडक्ट सेव नहीं है।"}</div>`}
+$("#categories").addEventListener("click",e=>{let b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;view="home";document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x===b));render()});
+$("#products").addEventListener("click",e=>{let s=e.target.closest("[data-save]");if(s){let id=+s.dataset.save;saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];localStorage.setItem("sdiSaved",JSON.stringify(saved));render()}if(e.target.closest("[data-demo]"))e.preventDefault()});
+$("#search").addEventListener("input",render);$("#langBtn").onclick=()=>{lang=lang==="en"?"hi":"en";translate()};
+$("#homeTab").onclick=()=>{view="home";category="All";document.querySelectorAll(".cat").forEach((x,i)=>x.classList.toggle("active",i===0));render()};
+$("#savedTab").onclick=()=>{view="saved";render()};$("#aboutTab").onclick=()=>alert(words[lang].about);
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+translate();
+</script>
+</body></html>
